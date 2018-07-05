@@ -25,6 +25,8 @@ import okhttp3.internal.http.HttpCodec;
 import okhttp3.internal.http.RealInterceptorChain;
 
 /** Opens a connection to the target server and proceeds to the next interceptor. */
+
+// 连接拦截器
 public final class ConnectInterceptor implements Interceptor {
   public final OkHttpClient client;
 

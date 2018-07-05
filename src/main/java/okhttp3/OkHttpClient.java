@@ -125,6 +125,8 @@ import static okhttp3.internal.Util.checkDuration;
  * remain idle.
  */
 public class OkHttpClient implements Cloneable, Call.Factory, WebSocket.Factory {
+
+  // 默认协议: http1.1、http2.0
   static final List<Protocol> DEFAULT_PROTOCOLS = Util.immutableList(
       Protocol.HTTP_2, Protocol.HTTP_1_1);
 

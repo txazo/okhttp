@@ -42,6 +42,8 @@ import static okhttp3.internal.Util.closeQuietly;
 import static okhttp3.internal.Util.discard;
 
 /** Serves requests from the cache and writes responses to the cache. */
+
+// 缓存拦截器
 public final class CacheInterceptor implements Interceptor {
   final InternalCache cache;
 

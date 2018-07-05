@@ -33,6 +33,8 @@ import static okhttp3.internal.Util.checkDuration;
  * A concrete interceptor chain that carries the entire interceptor chain: all application
  * interceptors, the OkHttp core, all network interceptors, and finally the network caller.
  */
+
+// 拦截器链
 public final class RealInterceptorChain implements Interceptor.Chain {
   private final List<Interceptor> interceptors;
   private final StreamAllocation streamAllocation;

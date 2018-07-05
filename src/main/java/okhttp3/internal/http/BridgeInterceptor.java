@@ -37,6 +37,8 @@ import static okhttp3.internal.Util.hostHeader;
  * request. Then it proceeds to call the network. Finally it builds a user response from the network
  * response.
  */
+
+// 添加请求头和响应头
 public final class BridgeInterceptor implements Interceptor {
   private final CookieJar cookieJar;
 

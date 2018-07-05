@@ -57,6 +57,8 @@ import static okhttp3.internal.http.StatusLine.HTTP_TEMP_REDIRECT;
  * This interceptor recovers from failures and follows redirects as necessary. It may throw an
  * {@link IOException} if the call was canceled.
  */
+
+// 重试和跟踪拦截器
 public final class RetryAndFollowUpInterceptor implements Interceptor {
   /**
    * How many redirects and auth challenges should we attempt? Chrome follows 21 redirects; Firefox,

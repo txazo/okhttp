@@ -45,12 +45,15 @@ public final class Dispatcher {
   private @Nullable ExecutorService executorService;
 
   /** Ready async calls in the order they'll be run. */
+  // 已就绪的异步调用
   private final Deque<AsyncCall> readyAsyncCalls = new ArrayDeque<>();
 
   /** Running asynchronous calls. Includes canceled calls that haven't finished yet. */
+  // 运行中的异步调用
   private final Deque<AsyncCall> runningAsyncCalls = new ArrayDeque<>();
 
   /** Running synchronous calls. Includes canceled calls that haven't finished yet. */
+  // 运行中的同步调用
   private final Deque<RealCall> runningSyncCalls = new ArrayDeque<>();
 
   public Dispatcher(ExecutorService executorService) {
@@ -126,7 +129,12 @@ public final class Dispatcher {
     this.idleCallback = idleCallback;
   }
 
+  /**
+   * 异步请求入队列
+   */
   synchronized void enqueue(AsyncCall call) {
+    // 最大并发请求数, 默认为64
+    // 单个Host最大并发请求数, 默认为5
     if (runningAsyncCalls.size() < maxRequests && runningCallsForHost(call) < maxRequestsPerHost) {
       runningAsyncCalls.add(call);
       executorService().execute(call);
@@ -153,6 +161,9 @@ public final class Dispatcher {
     }
   }
 
+  /**
+   * readyAsyncCalls中call晋升到runningAsyncCalls
+   */
   private void promoteCalls() {
     if (runningAsyncCalls.size() >= maxRequests) return; // Already running max capacity.
     if (readyAsyncCalls.isEmpty()) return; // No ready calls to promote.

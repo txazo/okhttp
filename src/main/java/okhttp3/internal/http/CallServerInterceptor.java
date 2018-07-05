@@ -30,6 +30,8 @@ import okio.Okio;
 import okio.Sink;
 
 /** This is the last interceptor in the chain. It makes a network call to the server. */
+
+// 网络调用拦截器
 public final class CallServerInterceptor implements Interceptor {
   private final boolean forWebSocket;
 
